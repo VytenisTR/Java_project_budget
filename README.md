@@ -1,1 +1,1 @@
-# Java_project_budget
+# Java budget project
