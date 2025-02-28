@@ -9,7 +9,6 @@ import Java_project_budget.model.user_input_validators.expenses_record_validator
 import Java_project_budget.model.user_input_validators.expenses_record_validators.ExpensesCategoryValidator;
 import Java_project_budget.model.user_input_validators.expenses_record_validators.PaymentTypeValidator;
 import Java_project_budget.model.user_input_validators.expenses_record_validators.bank_card_validator.BankCardValidator;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

@@ -14,6 +14,11 @@ public final class IncomeRecordResolver {
     private final IsBankTransferValidator isBankTransferValidator = new IsBankTransferValidator();
     private final OtherInformationValidator otherInformationValidator = new OtherInformationValidator();
 
-    public void createIncomeRecord() {
+    public IncomeRecord createIncomeRecord() {
+        return new IncomeRecord(incomeAmountValidator.enterAmount(),
+                incomeCategoryValidator.enterIncomeCategory(),
+                dateTimeValidator.enterDateTime(),
+                isBankTransferValidator.isBankTransfer(),
+                otherInformationValidator.enterOtherInformation());
     }
 }

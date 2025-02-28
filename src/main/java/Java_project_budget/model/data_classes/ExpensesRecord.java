@@ -80,21 +80,21 @@ public class ExpensesRecord {
     @Override
     public String toString() {
         if (bankCard == null) {
-            return String.format("Unikalus išlaidų įrašo numeris: %d\n" +
+            return String.format("\nUnikalus išlaidų įrašo numeris: %d\n" +
                             "Išlaidų suma: %.2f EUR\n" +
                             "Išlaidų kategorija: %s\n" +
                             "Išlaidų įrašo data: %s\n" +
                             "Atsiskaitymo būdas: %s\n" +
-                            "Papildoma informacija: %s\n", getId(), getAmount(), getCategory(),
+                            "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
                     getDate(), getPaymentType(), getOtherInformation());
         } else {
-            return String.format("Unikalus išlaidų įrašo numeris: %d\n" +
+            return String.format("\nUnikalus išlaidų įrašo numeris: %d\n" +
                             "Išlaidų suma: %.2f EUR\n" +
                             "Išlaidų kategorija: %s\n" +
                             "Išlaidų įrašo data: %s\n" +
                             "Atsiskaitymo būdas: %s\n" +
                             "%s" + //Banko kortelės informacija
-                            "Papildoma informacija: %s\n", getId(), getAmount(), getCategory(),
+                            "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
                     getDate(), getPaymentType(), getBankCardInfo(), getOtherInformation());
         }
     }

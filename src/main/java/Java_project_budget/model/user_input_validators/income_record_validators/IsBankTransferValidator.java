@@ -24,13 +24,13 @@ public final class IsBankTransferValidator {
                 }
 
                 if (isBankTransfer < 0)
-                    System.out.println("\nKlaidinga įvestis! Pasirinktas numeris yra neegzistuojantis!\n" +
+                    System.out.println("\nKlaidinga įvestis! Toks pasirinkimas neegzistuoja!\n" +
                             "Prašome pasirinkti reikšmę iš pateikto pasirinkimų sąrašo " +
-                            "(skaičių 1 arba 2).");
+                            "(skaičių 1 arba 2).\n");
             } catch (InputMismatchException | IllegalArgumentException exception) {
                 System.out.println("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
                         "Prašome pasirinkti reikšmę iš pateikto pasirinkimų sąrašo " +
-                        "(skaičių 1 arba 2).");
+                        "(skaičių 1 arba 2).\n");
                 SC.nextLine();
             }
         }

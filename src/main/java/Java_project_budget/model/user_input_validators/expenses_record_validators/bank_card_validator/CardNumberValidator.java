@@ -28,7 +28,7 @@ public final class CardNumberValidator {
                         + cardNumber.substring(4, 8).concat("-")
                         + cardNumber.substring(8, 12).concat("-")
                         + cardNumber.substring(12, 16).concat("-")
-                        + cardNumber.substring(16).concat("-");
+                        + cardNumber.substring(16);
             }
         }
 

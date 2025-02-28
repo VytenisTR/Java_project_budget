@@ -58,12 +58,12 @@ public class IncomeRecord {
 
     @Override
     public String toString() {
-        return String.format("Unikalus pajamų įrašo numeris: %d\n" +
+        return String.format("\nUnikalus pajamų įrašo numeris: %d\n" +
                 "Pajamų suma: %.2f EUR\n" +
                 "Pajamų kategorija: %s\n" +
                 "Pajamų įrašo data: %s\n" +
                 "Ar pajamos buvo gautos į banko sąskaitą: %s\n" +
-                "Papildoma informacija: %s\n", getId(), getAmount(), getCategory(),
+                "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
                 getDate(), isBankTransfer ? "Taip" : "Ne", getOtherInformation());
     }
 }
