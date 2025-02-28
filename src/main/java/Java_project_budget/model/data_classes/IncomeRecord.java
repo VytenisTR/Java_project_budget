@@ -1,28 +1,32 @@
-package Java_project_budget;
+package Java_project_budget.model.data_classes;
 
-import Java_project_budget.BudgetEnums.IncomeCategory;
+import Java_project_budget.model.enums.IncomeCategory;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class IncomeRecord {
+    private long idCount = 1;
+    private final long id;
     private final BigDecimal amount;
     private final IncomeCategory category;
     private final LocalDateTime date;
     private final boolean isBankTransfer;
     private final String otherInformation;
 
-    public IncomeRecord(final BigDecimal amount, final IncomeCategory category, final LocalDateTime date
-            , boolean isBankTransfer, final String otherInformation) {
+    public IncomeRecord(final BigDecimal amount, final IncomeCategory category, final LocalDateTime date,
+                        boolean isBankTransfer, final String otherInformation) {
+        this.id = idCount;
         this.amount = amount;
         this.category = category;
         this.date = date;
         this.isBankTransfer = isBankTransfer;
-        if (otherInformation == null)
-            this.otherInformation = otherInformation;
-        else
-            this.otherInformation = (otherInformation.substring(0, 1).toUpperCase()
-                    + otherInformation.substring(1).toLowerCase()).trim();
+        this.otherInformation = otherInformation;
+        idCount++;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public double getAmount() {
@@ -30,13 +34,11 @@ public class IncomeRecord {
     }
 
     public String getCategory() {
-        return (category.toString().substring(0, 1).toUpperCase()
-                + category.toString().substring(1).toLowerCase())
-                .replace('_', ' ');
+        return category.getPrintLT();
     }
 
     public String getDate() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:SS");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return date.format(dateTimeFormatter);
     }
 
@@ -48,7 +50,7 @@ public class IncomeRecord {
     }
 
     public String getOtherInformation() {
-        if (otherInformation == null)
+        if (otherInformation.isBlank())
             return "Nėra jokios papildomos informacijos.";
         else
             return otherInformation;
@@ -56,11 +58,12 @@ public class IncomeRecord {
 
     @Override
     public String toString() {
-        return String.format("Pajamų suma: %.2f EUR\n" +
+        return String.format("Unikalus pajamų įrašo numeris: %d\n" +
+                "Pajamų suma: %.2f EUR\n" +
                 "Pajamų kategorija: %s\n" +
                 "Pajamų įrašo data: %s\n" +
-                "Ar pinigai buvo gauti į banko sąskaitą: %s\n" +
-                "Papildoma informacija: %s\n", getAmount(), getCategory(),
+                "Ar pajamos buvo gautos į banko sąskaitą: %s\n" +
+                "Papildoma informacija: %s\n", getId(), getAmount(), getCategory(),
                 getDate(), isBankTransfer ? "Taip" : "Ne", getOtherInformation());
     }
 }

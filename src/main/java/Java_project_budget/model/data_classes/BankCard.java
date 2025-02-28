@@ -1,13 +1,13 @@
-package Java_project_budget;
+package Java_project_budget.model.data_classes;
 
-import Java_project_budget.BudgetEnums.CardType;
+import Java_project_budget.model.enums.CardType;
 
 public class BankCard {
     private final String number;
     private final CardType cardType;
 
     public BankCard(final String number, final CardType cardType) {
-        this.number = number.toUpperCase().trim();
+        this.number = number;
         this.cardType = cardType;
     }
 
@@ -16,9 +16,7 @@ public class BankCard {
     }
 
     public String getCardType() {
-        return (cardType.toString().substring(0, 1).toUpperCase() +
-                cardType.toString().substring(1).toLowerCase())
-                .replace('_', ' ');
+        return cardType.getPrintLT();
     }
 
     @Override
