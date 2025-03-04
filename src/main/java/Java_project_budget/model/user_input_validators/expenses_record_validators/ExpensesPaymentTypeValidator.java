@@ -5,7 +5,7 @@ import Java_project_budget.model.user_input_validators.validator_utilities.Displ
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class PaymentTypeValidator {
+public final class ExpensesPaymentTypeValidator {
     private static final Scanner SC = new Scanner(System.in);
 
     public PaymentType enterPaymentType() {

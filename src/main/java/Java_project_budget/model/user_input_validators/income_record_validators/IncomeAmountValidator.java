@@ -1,11 +1,10 @@
 package Java_project_budget.model.user_input_validators.income_record_validators;
 
+import Java_project_budget.model.user_input_validators.abstract_validators.RecordAmountValidator;
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public final class IncomeAmountValidator {
-    private static final Scanner SC = new Scanner(System.in);
+public final class IncomeAmountValidator extends RecordAmountValidator {
 
     public BigDecimal enterAmount() {
         BigDecimal amount = BigDecimal.valueOf(0D);
