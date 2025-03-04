@@ -1,6 +1,6 @@
 package Java_project_budget.model.user_input_validators.validator_utilities;
 
-public final class DisplayMeniuYesOrNo {
+public final class DisplayMeniuBankTransfer {
 
     public static void displayMeniu() {
         System.out.println("\nAr pajamos buvo gautos į banko sąskaitą:");

@@ -2,7 +2,7 @@ package Java_project_budget.model.data_classes;
 
 import Java_project_budget.model.enums.CardType;
 
-public class BankCard {
+public final class BankCard {
     private final String number;
     private final CardType cardType;
 

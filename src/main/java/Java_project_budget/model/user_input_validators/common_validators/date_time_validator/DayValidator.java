@@ -1,7 +1,7 @@
 package Java_project_budget.model.user_input_validators.common_validators.date_time_validator;
 
 import Java_project_budget.model.user_input_validators.validator_utilities.CheckLeapYear;
-import Java_project_budget.model.user_input_validators.validator_utilities.GetMonthByNumber;
+import Java_project_budget.model.user_input_validators.validator_utilities.MonthByNumber;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,8 +11,8 @@ public final class DayValidator {
     public int enterDay(final int userYearInput, final int userMonthInput) {
         int day = 0;
         int monthMaxDayCount = CheckLeapYear.isLeapYear(userYearInput)
-                ? GetMonthByNumber.getMonth(userMonthInput).getDayCountLeapYear()
-                : GetMonthByNumber.getMonth(userMonthInput).getDayCountNotLeapYear();
+                ? MonthByNumber.getMonthByNumber(userMonthInput).getDayCountLeapYear()
+                : MonthByNumber.getMonthByNumber(userMonthInput).getDayCountNotLeapYear();
 
         while(day <= 0 || day > monthMaxDayCount) {
             System.out.print("\nĮveskite mėnesio dieną, kurią buvo gautos pajamos: ");

@@ -1,17 +1,17 @@
 package Java_project_budget.model.user_input_validators.income_record_validators;
 
-import Java_project_budget.model.user_input_validators.validator_utilities.DisplayMeniuYesOrNo;
+import Java_project_budget.model.user_input_validators.validator_utilities.DisplayMeniuBankTransfer;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class IsBankTransferValidator {
+public final class IncomeIsBankTransferValidator {
     private static final Scanner SC = new Scanner(System.in);
 
     public boolean isBankTransfer() {
         int isBankTransfer = -1;
 
         while(isBankTransfer < 0) {
-            DisplayMeniuYesOrNo.displayMeniu();
+            DisplayMeniuBankTransfer.displayMeniu();
 
             System.out.print("\nNurodykite ar pajamos buvo gautos į banko sąskaitą, " +
                     "įvesdami pasirinkimo numerį iš pateikto pasirinkimų sąrašo: ");

@@ -17,7 +17,10 @@ public final class YearValidator {
             try {
                 year = SC.nextInt();
 
-                if (year < LocalDate.now().minusYears(5).getYear())
+                if (String.valueOf(year).length() != 4)
+                    System.out.println("\nKlaidinga įvestis! Per didelis arba per mažas simbolių kiekis!\n" +
+                            "Metus turi sudaryti 4 simboliai.");
+                else if (year < LocalDate.now().minusYears(5).getYear())
                     System.out.println("\nKlaidinga įvestis! " +
                             "Metai negali būti ankstesni už praėjusius penkerius metus.");
                 else if (year > LocalDate.now().getYear())

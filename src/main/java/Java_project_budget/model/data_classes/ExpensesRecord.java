@@ -1,45 +1,35 @@
 package Java_project_budget.model.data_classes;
 
+import Java_project_budget.model.data_classes.abstract_classes.BudgetRecord;
 import Java_project_budget.model.enums.ExpensesCategory;
 import Java_project_budget.model.enums.PaymentType;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ExpensesRecord {
-    private long idCount = 1;
-    private final long id;
-    private final BigDecimal amount;
-    private final ExpensesCategory category;
-    private final LocalDateTime date;
-    private final PaymentType paymentType;
-    private final BankCard bankCard;
-    private final String otherInformation;
+public final class ExpensesRecord extends BudgetRecord {
+    private ExpensesCategory category;
+    private PaymentType paymentType;
+    private BankCard bankCard;
 
     public ExpensesRecord(final BigDecimal amount, final ExpensesCategory category,
                           final LocalDateTime date, final PaymentType paymentType,
                           final BankCard bankCard, final String otherInformation) {
-        this.id = idCount;
-        this.amount = amount;
+        super(amount, date, otherInformation);
         this.category = category;
-        this.date = date;
         this.paymentType = paymentType;
         this.bankCard = bankCard;
-        this.otherInformation = otherInformation;
-        idCount++;
+        super.increaseIdCount();
     }
 
     public ExpensesRecord(final BigDecimal amount, final ExpensesCategory category,
                           final LocalDateTime date, final PaymentType paymentType,
                           final String otherInformation) {
-        this.id = idCount;
-        this.amount = amount;
+        super(amount, date, otherInformation);
         this.category = category;
-        this.date = date;
         this.paymentType = paymentType;
         this.bankCard = null;
-        this.otherInformation = otherInformation;
-        idCount++;
+        super.increaseIdCount();
     }
 
     public long getId() {
@@ -75,6 +65,30 @@ public class ExpensesRecord {
             return "Nėra jokios papildomos informacijos.";
         else
             return otherInformation;
+    }
+
+    public void setAmount(final BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setCategory(final ExpensesCategory category) {
+        this.category = category;
+    }
+
+    public void setDate(final LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setPaymentType(final PaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public void setBankCardInfo(final BankCard bankCard) {
+        this.bankCard = bankCard;
+    }
+
+    public void setOtherInformation(final String otherInformation) {
+        this.otherInformation = otherInformation;
     }
 
     @Override

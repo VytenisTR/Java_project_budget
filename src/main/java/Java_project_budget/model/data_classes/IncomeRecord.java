@@ -1,28 +1,21 @@
 package Java_project_budget.model.data_classes;
 
+import Java_project_budget.model.data_classes.abstract_classes.BudgetRecord;
 import Java_project_budget.model.enums.IncomeCategory;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class IncomeRecord {
-    private long idCount = 1;
-    private final long id;
-    private final BigDecimal amount;
-    private final IncomeCategory category;
-    private final LocalDateTime date;
-    private final boolean isBankTransfer;
-    private final String otherInformation;
+public final class IncomeRecord extends BudgetRecord {
+    private IncomeCategory category;
+    private boolean isBankTransfer;
 
     public IncomeRecord(final BigDecimal amount, final IncomeCategory category, final LocalDateTime date,
                         boolean isBankTransfer, final String otherInformation) {
-        this.id = idCount;
-        this.amount = amount;
+        super(amount, date, otherInformation);
         this.category = category;
-        this.date = date;
         this.isBankTransfer = isBankTransfer;
-        this.otherInformation = otherInformation;
-        idCount++;
+        super.increaseIdCount();
     }
 
     public long getId() {
@@ -44,9 +37,9 @@ public class IncomeRecord {
 
     public String getIsBankTransfer() {
         if (isBankTransfer)
-            return "Pinigai buvo gauti į banko sąskaitą.";
+            return "Taip";
         else
-            return "Pinigai nebuvo gauti į banko sąskaitą.";
+            return "Ne";
     }
 
     public String getOtherInformation() {
@@ -54,6 +47,26 @@ public class IncomeRecord {
             return "Nėra jokios papildomos informacijos.";
         else
             return otherInformation;
+    }
+
+    public void setAmount (final BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setCategory (final IncomeCategory category) {
+        this.category = category;
+    }
+
+    public void setDate (final LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setIsBankTransfer(final boolean isBankTransfer) {
+        this.isBankTransfer = isBankTransfer;
+    }
+
+    public void setOtherInformation(final String otherInformation) {
+        this.otherInformation = otherInformation;
     }
 
     @Override
