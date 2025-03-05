@@ -1,4 +1,4 @@
-package Java_project_budget.model.data_classes_resolvers;
+package Java_project_budget.model.budget_management.budget_management_services;
 
 import Java_project_budget.model.data_classes.IncomeRecord;
 import Java_project_budget.model.user_input_validators.abstract_validators.RecordAmountValidator;
@@ -8,7 +8,7 @@ import Java_project_budget.model.user_input_validators.income_record_validators.
 import Java_project_budget.model.user_input_validators.income_record_validators.IncomeCategoryValidator;
 import Java_project_budget.model.user_input_validators.income_record_validators.IncomeIsBankTransferValidator;
 
-public final class IncomeRecordResolver {
+public final class IncomeRecordResolverService {
     private final RecordAmountValidator recordAmountValidator = new IncomeAmountValidator();
     private final IncomeCategoryValidator incomeCategoryValidator = new IncomeCategoryValidator();
     private final DateTimeValidator dateTimeValidator = new DateTimeValidator();

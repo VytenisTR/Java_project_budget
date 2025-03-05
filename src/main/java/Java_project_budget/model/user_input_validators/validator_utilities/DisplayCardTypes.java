@@ -8,7 +8,7 @@ public final class DisplayCardTypes {
         System.out.println("\nBanko kortelių tipų sąrašas:");
 
         for (int i = 0; i < CardType.values().length; i++) {
-            System.out.printf("%d. %s\n", i + 1, CardType.values()[i].getPrintLT());
+            System.out.printf("[%d] - %s\n", i + 1, CardType.values()[i].getPrintLT());
         }
     }
 }

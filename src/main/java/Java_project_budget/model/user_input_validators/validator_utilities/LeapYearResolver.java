@@ -1,6 +1,6 @@
 package Java_project_budget.model.user_input_validators.validator_utilities;
 
-public final class CheckLeapYear {
+public final class LeapYearResolver {
 
     public static boolean isLeapYear(final int year) {
         boolean isLeapYear = false;

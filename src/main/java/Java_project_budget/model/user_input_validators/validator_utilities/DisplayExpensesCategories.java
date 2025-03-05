@@ -8,7 +8,7 @@ public final class DisplayExpensesCategories {
         System.out.println("\nIšlaidų kategorijų sąrašas:");
 
         for (int i = 0; i < ExpensesCategory.values().length; i++) {
-            System.out.printf("%d. %s\n", i + 1, ExpensesCategory.values()[i].getPrintLT());
+            System.out.printf("[%d] - %s\n", i + 1, ExpensesCategory.values()[i].getPrintLT());
         }
     }
 }
