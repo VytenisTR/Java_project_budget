@@ -8,7 +8,7 @@ public final class DisplayIncomeCategories {
         System.out.println("\nPajamų kategorijų sąrašas:");
 
         for (int i = 0; i < IncomeCategory.values().length; i++) {
-            System.out.printf("%d. %s\n", i + 1, IncomeCategory.values()[i].getPrintLT());
+            System.out.printf("[%d] - %s\n", i + 1, IncomeCategory.values()[i].getPrintLT());
         }
     }
 }

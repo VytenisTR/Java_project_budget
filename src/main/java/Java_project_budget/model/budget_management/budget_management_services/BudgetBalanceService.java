@@ -18,6 +18,6 @@ public final class BudgetBalanceService {
             }
         }
 
-        System.out.printf("\nJūsų balansas yra: %.2f EUR", balance);
+        System.out.printf("\nJūsų balansas yra: %.2f EUR\n", balance);
     }
 }

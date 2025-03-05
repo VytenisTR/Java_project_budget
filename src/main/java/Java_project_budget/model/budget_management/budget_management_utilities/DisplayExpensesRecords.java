@@ -7,7 +7,7 @@ import java.util.List;
 public final class DisplayExpensesRecords {
 
     public static void printExpensesRecords(List<BudgetRecord> budgetRecordsList) {
-        System.out.println("Biudžeto išlaidų įrašų sąrašas:");
+        System.out.println("\nBiudžeto išlaidų įrašų sąrašas:");
 
         for (BudgetRecord budgetRecord : budgetRecordsList) {
             if (budgetRecord instanceof ExpensesRecord) {

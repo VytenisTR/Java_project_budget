@@ -2,7 +2,7 @@ package Java_project_budget.model.user_input_validators.validator_utilities;
 
 import Java_project_budget.model.enums.Months;
 
-public final class MonthByNumber {
+public final class MonthByNumberResolver {
 
     public static Months getMonthByNumber(final int monthNumber) {
         Months month = null;

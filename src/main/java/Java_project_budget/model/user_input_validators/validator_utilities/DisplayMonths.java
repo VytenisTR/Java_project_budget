@@ -8,7 +8,7 @@ public final class DisplayMonths {
         System.out.println("\nMėnesių sąrašas:");
 
         for (int i = 0; i < Months.values().length; i++) {
-            System.out.printf("%d. %s\n", i + 1, Months.values()[i].getPrintLT());
+            System.out.printf("[%d] - %s\n", i + 1, Months.values()[i].getPrintLT());
         }
     }
 }

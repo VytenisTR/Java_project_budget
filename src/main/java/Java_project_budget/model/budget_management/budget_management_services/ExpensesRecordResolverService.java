@@ -1,4 +1,4 @@
-package Java_project_budget.model.data_classes_resolvers;
+package Java_project_budget.model.budget_management.budget_management_services;
 
 import Java_project_budget.model.data_classes.ExpensesRecord;
 import Java_project_budget.model.enums.ExpensesCategory;
@@ -13,7 +13,7 @@ import Java_project_budget.model.user_input_validators.expenses_record_validator
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public final class ExpensesRecordResolver {
+public final class ExpensesRecordResolverService {
     private final RecordAmountValidator recordAmountValidator = new ExpensesAmountValidator();
     private final ExpensesCategoryValidator expensesCategoryValidator = new ExpensesCategoryValidator();
     private final DateTimeValidator dateTimeValidator = new DateTimeValidator();
