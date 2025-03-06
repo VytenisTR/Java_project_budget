@@ -1,6 +1,6 @@
 package Java_project_budget;
 
-import Java_project_budget.model.budget_management.BudgetManagement;
+import Java_project_budget.model.budget.BudgetManagement;
 
 public class App {
 
