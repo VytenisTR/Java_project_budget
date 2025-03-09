@@ -3,7 +3,7 @@ package Java_project_budget.model.budget.services;
 import Java_project_budget.model.domain.data.ExpensesRecord;
 import Java_project_budget.model.enums.ExpensesCategory;
 import Java_project_budget.model.enums.PaymentType;
-import Java_project_budget.model.domain.parent.AmountInput;
+import Java_project_budget.model.domain.interfaces.AmountInput;
 import Java_project_budget.model.input.expenses.ExpensesOtherInformationInput;
 import Java_project_budget.model.input.expenses.date.ExpensesDateTimeInput;
 import Java_project_budget.model.input.bankcard.BankCardInput;

@@ -1,13 +1,12 @@
 package Java_project_budget.model.input.expenses;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
+import Java_project_budget.model.domain.interfaces.ScannerInput;
 import Java_project_budget.model.enums.PaymentType;
 import Java_project_budget.model.input.utils.DisplayPaymentTypes;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public final class ExpensesPaymentTypeInput {
-    private static final Scanner SC = new Scanner(System.in);
+public final class ExpensesPaymentTypeInput implements ScannerInput {
 
     public PaymentType enterPaymentType() {
         PaymentType paymentType = null;

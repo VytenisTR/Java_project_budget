@@ -1,6 +1,6 @@
 package Java_project_budget.model.budget.utils;
 
-import Java_project_budget.model.budget.services.files.utils.FileWriteUtilities;
+import Java_project_budget.model.budget.services.files.utils.BudgetRecordExistanceResolver;
 import Java_project_budget.model.domain.data.IncomeRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public final class DisplayIncomeRecords {
 
     public static void printIncomeRecords(List<BudgetRecord> budgetRecordsList) {
-        if (!FileWriteUtilities.checkIfIncomeRecordExists(budgetRecordsList)) {
+        if (!BudgetRecordExistanceResolver.checkIfIncomeRecordExists(budgetRecordsList)) {
             PrintMessages.printMessageWithNewLine
                     ("\nNėra jokių biudžetų pajamų įrašų.");
         } else {

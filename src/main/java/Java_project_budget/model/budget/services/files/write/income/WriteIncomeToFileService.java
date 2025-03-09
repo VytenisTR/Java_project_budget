@@ -1,7 +1,7 @@
 package Java_project_budget.model.budget.services.files.write.income;
 
 import Java_project_budget.model.budget.services.files.transformers.IncomeCSVWriteTransformer;
-import Java_project_budget.model.budget.services.files.utils.FileWriteUtilities;
+import Java_project_budget.model.budget.services.files.utils.BudgetRecordExistanceResolver;
 import Java_project_budget.model.budget.utils.BudgetListSizeResolver;
 import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.domain.data.IncomeRecord;
@@ -21,7 +21,7 @@ public final class WriteIncomeToFileService {
         if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
             PrintMessages.printMessageWithNewLine
                     ("\nNėra jokių įrašų, kuriuos būtų galima išsaugoti.");
-        } else if (!FileWriteUtilities.checkIfIncomeRecordExists(budgetRecordsList)) {
+        } else if (!BudgetRecordExistanceResolver.checkIfIncomeRecordExists(budgetRecordsList)) {
             PrintMessages.printMessageWithNewLine
                     ("\nNėra jokių biudžeto pajamų įrašų, kuriuos būtų galima išsaugoti.");
         } else {

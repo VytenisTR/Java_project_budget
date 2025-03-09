@@ -1,12 +1,11 @@
 package Java_project_budget.model.input.expenses.date;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
+import Java_project_budget.model.domain.interfaces.YearInput;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public final class ExpensesYearInput {
-    private static final Scanner SC = new Scanner(System.in);
+public final class ExpensesYearInput implements YearInput {
 
     public int enterYear() {
         int year = 0;
