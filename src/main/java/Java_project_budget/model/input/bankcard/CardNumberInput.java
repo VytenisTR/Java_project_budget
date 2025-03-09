@@ -1,9 +1,10 @@
 package Java_project_budget.model.input.bankcard;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.ScannerInput;
+import java.util.Scanner;
 
-public final class CardNumberInput implements ScannerInput {
+public final class CardNumberInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public String enterCardNumber() {
         String cardNumber = null;

@@ -1,10 +1,11 @@
 package Java_project_budget.model.budget.meniu.income;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.ScannerInput;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public final class IncomeMeniuResolver implements ScannerInput {
+public final class IncomeMeniuResolver {
+    private static final Scanner SC = new Scanner(System.in);
 
     public int resolveMeniu() {
         int userInput = 0;

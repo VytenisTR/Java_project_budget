@@ -1,12 +1,13 @@
 package Java_project_budget.model.input.bankcard;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.ScannerInput;
 import Java_project_budget.model.enums.CardType;
 import Java_project_budget.model.input.utils.DisplayCardTypes;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public final class CardTypeInput implements ScannerInput {
+public final class CardTypeInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public CardType enterCardType() {
         CardType cardType = null;

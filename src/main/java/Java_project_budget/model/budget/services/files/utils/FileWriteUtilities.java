@@ -5,7 +5,7 @@ import Java_project_budget.model.domain.data.IncomeRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import java.util.List;
 
-public final class BudgetRecordExistanceResolver {
+public final class FileWriteUtilities {
 
     public static boolean checkIfIncomeRecordExists(List<BudgetRecord> budgetRecordsList) {
         boolean result = false;

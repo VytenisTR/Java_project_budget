@@ -1,9 +1,8 @@
 package Java_project_budget.model.input.income.date;
 
-import Java_project_budget.model.domain.interfaces.DateTimeInput;
 import java.time.LocalDateTime;
 
-public final class IncomeDateTimeInput implements DateTimeInput {
+public final class IncomeDateTimeInput {
 
     public LocalDateTime enterDateTime() {
         final int userYearInput = new IncomeYearInput().enterYear();

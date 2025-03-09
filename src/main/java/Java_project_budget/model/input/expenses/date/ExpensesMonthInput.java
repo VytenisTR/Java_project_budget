@@ -1,11 +1,12 @@
 package Java_project_budget.model.input.expenses.date;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.MonthInput;
 import Java_project_budget.model.input.utils.DisplayMonths;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public final class ExpensesMonthInput implements MonthInput {
+public final class ExpensesMonthInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public int enterMonth() {
         int month = 0;

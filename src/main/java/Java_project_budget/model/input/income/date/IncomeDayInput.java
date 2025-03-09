@@ -1,12 +1,13 @@
 package Java_project_budget.model.input.income.date;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.DayInput;
 import Java_project_budget.model.input.utils.LeapYearResolver;
 import Java_project_budget.model.input.utils.MonthByNumberResolver;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public final class IncomeDayInput implements DayInput {
+public final class IncomeDayInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public int enterDay(final int userYearInput, final int userMonthInput) {
         int day = 0;

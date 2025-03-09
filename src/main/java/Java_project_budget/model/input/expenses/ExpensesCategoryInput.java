@@ -1,12 +1,13 @@
 package Java_project_budget.model.input.expenses;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.ScannerInput;
 import Java_project_budget.model.enums.ExpensesCategory;
 import Java_project_budget.model.input.utils.DisplayExpensesCategories;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public final class ExpensesCategoryInput implements ScannerInput {
+public final class ExpensesCategoryInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public ExpensesCategory enterExpensesCategory() {
         ExpensesCategory expensesCategory = null;

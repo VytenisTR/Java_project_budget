@@ -1,9 +1,10 @@
 package Java_project_budget.model.input.expenses;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.interfaces.OtherInformationInput;
+import java.util.Scanner;
 
-public final class ExpensesOtherInformationInput implements OtherInformationInput {
+public final class ExpensesOtherInformationInput {
+    private static final Scanner SC = new Scanner(System.in);
 
     public String enterOtherInformation() {
         String otherInformation = null;
