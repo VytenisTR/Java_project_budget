@@ -4,7 +4,7 @@ public enum PaymentType {
     APPLEPAY("Applepay"),
     GOOGLEPAY("Googlepay"),
     GRYNIEJI("Grynieji"),
-    BANKINĖ_KORTELĖ("Bankinė kortelė"),
+    BANKINE_KORTELE("Bankinė kortelė"),
     BANKINIS_PAVEDIMAS("Bankinis pavedimas");
 
     private final String printLT;

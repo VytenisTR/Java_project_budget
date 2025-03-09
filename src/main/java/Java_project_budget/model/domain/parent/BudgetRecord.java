@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public abstract class BudgetRecord {
-    private long idCount = 1;
+    private static long idCount = 1;
     protected final long id;
     protected BigDecimal amount;
     protected LocalDateTime date;
@@ -18,7 +18,7 @@ public abstract class BudgetRecord {
     }
 
     protected void increaseIdCount() {
-        this.idCount++;
+        idCount++;
     }
 
     public abstract long getId();

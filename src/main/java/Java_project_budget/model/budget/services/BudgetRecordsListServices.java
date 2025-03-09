@@ -1,10 +1,11 @@
 package Java_project_budget.model.budget.services;
 
 import Java_project_budget.model.budget.utils.BudgetRecordIndexByIdResolver;
+import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.domain.data.IncomeRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import Java_project_budget.model.domain.parent.IdInput;
-import Java_project_budget.model.input.common.record_id.IncomeIdToBeRemovedInput;
+import Java_project_budget.model.input.record_id.IncomeIdToBeRemovedInput;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ public final class BudgetRecordsListServices {
         budgetRecordsList.add(budgetRecord);
 
         if (budgetRecord instanceof IncomeRecord) {
-            System.out.println("\nPajamų įrašas buvo sėkmingai pridėtas.\n");
+            PrintMessages.printMessageWithNewLine("\nPajamų įrašas buvo sėkmingai pridėtas.");
         } else {
-            System.out.println("\nIšlaidų įrašas buvo sėkmingai pridėtas.\n");
+            PrintMessages.printMessageWithNewLine("\nIšlaidų įrašas buvo sėkmingai pridėtas.");
         }
     }
 
@@ -29,11 +30,12 @@ public final class BudgetRecordsListServices {
         if (budgetRecordIndex != -1) {
             budgetRecordsList.remove(budgetRecordsList.get(budgetRecordIndex));
 
-            System.out.println(budgetRecordType == 1 ?
-                    "\nPasirinktas pajamų įrašas buvo sėkmingai pašalintas.\n" :
-                    "\nPasirinktas išlaidų įrašas buvo sėkmingai pašalintas.\n");
+            PrintMessages.printMessageWithNewLine(budgetRecordType == 1 ?
+                    "\nPasirinktas pajamų įrašas buvo sėkmingai pašalintas." :
+                    "\nPasirinktas išlaidų įrašas buvo sėkmingai pašalintas.");
         } else {
-            System.out.println("\nJūsų nurodytas unikalus įrašo numeris neegzistuoja!\n");
+            PrintMessages.printMessageWithNewLine
+                    ("\nJūsų nurodytas unikalus įrašo numeris neegzistuoja!\n");
         }
     }
 }

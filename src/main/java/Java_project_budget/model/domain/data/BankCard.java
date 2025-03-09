@@ -16,13 +16,13 @@ public final class BankCard implements Serializable {
         return number;
     }
 
-    public String getCardType() {
-        return cardType.getPrintLT();
+    public CardType getCardType() {
+        return cardType;
     }
 
     @Override
     public String toString() {
         return String.format("Banko kortelės numeris: %s\n" +
-                "Banko kortelės tipas: %s\n", getNumber(), getCardType());
+                "Banko kortelės tipas: %s\n", getNumber(), getCardType().getPrintLT());
     }
 }

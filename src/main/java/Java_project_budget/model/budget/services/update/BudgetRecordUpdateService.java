@@ -3,12 +3,12 @@ package Java_project_budget.model.budget.services.update;
 import Java_project_budget.model.budget.services.update.expenses.ExpensesRecordUpdateService;
 import Java_project_budget.model.budget.services.update.income.IncomeRecordUpdateService;
 import Java_project_budget.model.budget.utils.BudgetRecordIndexByIdResolver;
+import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.domain.data.ExpensesRecord;
 import Java_project_budget.model.domain.data.IncomeRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import Java_project_budget.model.domain.parent.IdInput;
-import Java_project_budget.model.input.common.record_id.IncomeIdToBeUpdatedInput;
-
+import Java_project_budget.model.input.record_id.IncomeIdToBeUpdatedInput;
 import java.util.List;
 
 public final class BudgetRecordUpdateService {
@@ -27,7 +27,8 @@ public final class BudgetRecordUpdateService {
             expensesRecordUpdateService.
                     updateExpensesRecord((ExpensesRecord) budgetRecordList.get(budgetRecordIndex));
         } else {
-            System.out.println("\nJūsų nurodytas unikalus įrašo numeris neegzistuoja!");
+            PrintMessages.printMessageWithNewLine
+                    ("\nJūsų nurodytas unikalus įrašo numeris neegzistuoja!");
         }
     }
 }

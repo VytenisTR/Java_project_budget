@@ -12,11 +12,11 @@ public final class MonthByNumberResolver {
             case 2 -> month = Months.VASARIS;
             case 3 -> month = Months.KOVAS;
             case 4 -> month = Months.BALANDIS;
-            case 5 -> month = Months.GEGUŽĖ;
-            case 6 -> month = Months.BIRŽELIS;
+            case 5 -> month = Months.GEGUZĖ;
+            case 6 -> month = Months.BIRZELIS;
             case 7 -> month = Months.LIEPA;
-            case 8 -> month = Months.RUGPJŪTIS;
-            case 9 -> month = Months.RUGSĖJIS;
+            case 8 -> month = Months.RUGPJUTIS;
+            case 9 -> month = Months.RUGSEJIS;
             case 10 -> month = Months.SPALIS;
             case 11 -> month = Months.LAPKRITIS;
             case 12 -> month = Months.GRUODIS;

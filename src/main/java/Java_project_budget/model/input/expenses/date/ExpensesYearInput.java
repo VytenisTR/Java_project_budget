@@ -1,10 +1,11 @@
-package Java_project_budget.model.input.common.date;
+package Java_project_budget.model.input.expenses.date;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class YearInput {
+public final class ExpensesYearInput {
     private static final Scanner SC = new Scanner(System.in);
 
     public int enterYear() {
@@ -12,22 +13,24 @@ public final class YearInput {
 
         while(year < LocalDate.now().minusYears(5).getYear() ||
                 year > LocalDate.now().getYear()) {
-            System.out.print("\nĮveskite metus, kuriais buvo gautos pajamos: ");
+            PrintMessages.printMessageWithoutNewLine("\nĮveskite metus, kuriais buvo patirtos išlaidos: ");
 
             try {
                 year = SC.nextInt();
 
                 if (String.valueOf(year).length() != 4)
-                    System.out.println("\nKlaidinga įvestis! Per didelis arba per mažas simbolių kiekis!\n" +
+                    PrintMessages.printMessageWithNewLine
+                            ("\nKlaidinga įvestis! Per didelis arba per mažas simbolių kiekis!\n" +
                             "Metus turi sudaryti 4 simboliai.");
                 else if (year < LocalDate.now().minusYears(5).getYear())
-                    System.out.println("\nKlaidinga įvestis! " +
+                    PrintMessages.printMessageWithNewLine("\nKlaidinga įvestis! " +
                             "Metai negali būti ankstesni už praėjusius penkerius metus.");
                 else if (year > LocalDate.now().getYear())
-                    System.out.println("\nKlaidinga įvestis! " +
+                    PrintMessages.printMessageWithNewLine("\nKlaidinga įvestis! " +
                             "Metai negali būti vėlesni už einamuosius metus.");
             } catch (InputMismatchException | IllegalArgumentException exception) {
-                System.out.println("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
+                PrintMessages.printMessageWithNewLine
+                        ("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
                         "Prašome nurodyti metus skaičiais.");
                 SC.nextLine();
             }

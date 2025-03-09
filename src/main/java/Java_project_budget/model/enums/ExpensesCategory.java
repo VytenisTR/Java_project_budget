@@ -1,19 +1,19 @@
 package Java_project_budget.model.enums;
 
 public enum ExpensesCategory {
-    AVALYNĖ("Avalynė"),
+    AVALYNE("Avalynė"),
     BALDAI("Baldai"),
-    DRABUŽIAI("Drabužiai"),
+    DRABUZIAI("Drabužiai"),
     DRAUDIMAS("Draudimas"),
     ELEKTRONIKOS_PRIETAISAI("Elektronikos prietaisai"),
-    GROŽIO_ĮRANKIAI("Grožio įrankiai"),
-    KELIONĖS("Kelionės"),
-    KITI_MOKESČIAI("Kiti mokesčiai"),
-    KOMUNALINIAI_MOKESČIAI("Komunaliniai mokesčiai"),
+    GROZIO_IRANKIAI("Grožio įrankiai"),
+    KELIONES("Kelionės"),
+    KITI_MOKESCIAI("Kiti mokesčiai"),
+    KOMUNALINIAI_MOKESCIAI("Komunaliniai mokesčiai"),
     KURAS("Kuras"),
     LICENZIJOS("Licenzijos"),
     MAISTAS("Maistas"),
-    NAMŲ_APYVOKOS_ĮRANKIAI("Namų apyvokos įrankiai"),
+    NAMU_APYVOKOS_IRANKIAI("Namų apyvokos įrankiai"),
     PASKOLOS("Paskolos");
 
     private final String printLT;

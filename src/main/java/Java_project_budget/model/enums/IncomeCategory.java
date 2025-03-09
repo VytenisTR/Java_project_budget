@@ -1,11 +1,11 @@
 package Java_project_budget.model.enums;
 
 public enum IncomeCategory {
-    DARBO_UŽMOKESTIS("Darbo užmokestis"),
+    DARBO_UZMOKESTIS("Darbo užmokestis"),
     DIVIDENDAI("Dividendai"),
-    SOCIALINĖS_IŠMOKOS("Socialinės išmokos"),
+    SOCIALINES_ISMOKOS("Socialinės išmokos"),
     KOMISINIAI("Komisiniai"),
-    PALŪKANOS("Palūkanos"),
+    PALUKANOS("Palūkanos"),
     PENSIJA("Pensija"),
     PRIEDAI("Priedai");
 
