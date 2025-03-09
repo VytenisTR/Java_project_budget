@@ -1,10 +1,12 @@
 package Java_project_budget.model.input.record_id;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.parent.IdInput;
+import Java_project_budget.model.domain.interfaces.IdInput;
+import Java_project_budget.model.domain.interfaces.ScannerInput;
+
 import java.util.InputMismatchException;
 
-public final class ExpensesIdToBeRemovedInput extends IdInput {
+public final class ExpensesIdToBeRemovedInput implements IdInput {
 
     public int enterId() {
         int id = 0;

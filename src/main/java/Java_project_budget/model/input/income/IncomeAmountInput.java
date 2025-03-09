@@ -1,11 +1,11 @@
 package Java_project_budget.model.input.income;
 
 import Java_project_budget.model.budget.utils.PrintMessages;
-import Java_project_budget.model.domain.parent.AmountInput;
+import Java_project_budget.model.domain.interfaces.AmountInput;
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
 
-public final class IncomeAmountInput extends AmountInput {
+public final class IncomeAmountInput implements AmountInput {
 
     public BigDecimal enterAmount() {
         BigDecimal amount = BigDecimal.valueOf(0D);

@@ -1,7 +1,7 @@
 package Java_project_budget.model.budget.services;
 
 import Java_project_budget.model.domain.data.IncomeRecord;
-import Java_project_budget.model.domain.parent.AmountInput;
+import Java_project_budget.model.domain.interfaces.AmountInput;
 import Java_project_budget.model.input.income.IncomeOtherInformationInput;
 import Java_project_budget.model.input.income.IncomeAmountInput;
 import Java_project_budget.model.input.income.IncomeCategoryInput;
