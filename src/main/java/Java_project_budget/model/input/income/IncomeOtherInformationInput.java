@@ -1,15 +1,17 @@
-package Java_project_budget.model.input.common;
+package Java_project_budget.model.input.income;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
 import java.util.Scanner;
 
-public final class OtherInformationInput {
+public final class IncomeOtherInformationInput {
     private static final Scanner SC = new Scanner(System.in);
 
     public String enterOtherInformation() {
         String otherInformation = null;
 
         while(otherInformation == null) {
-            System.out.print("\nĮveskite papildomą informaciją apie gautas pajamas: ");
+            PrintMessages.printMessageWithoutNewLine
+                    ("\nĮveskite papildomą informaciją apie gautas pajamas: ");
 
             String userInput = SC.next();
 

@@ -1,10 +1,11 @@
-package Java_project_budget.model.input.common.date;
+package Java_project_budget.model.input.expenses.date;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.input.utils.DisplayMonths;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class MonthInput {
+public final class ExpensesMonthInput {
     private static final Scanner SC = new Scanner(System.in);
 
     public int enterMonth() {
@@ -13,7 +14,8 @@ public final class MonthInput {
         while(month <= 0) {
             DisplayMonths.printMonths();
 
-            System.out.print("\nNurodykite metų mėnesį, kurį buvo gautos pajamos, įvesdami mėnesio numerį: ");
+            PrintMessages.printMessageWithoutNewLine
+                    ("\nNurodykite metų mėnesį, kurį buvo patirtos išlaidos, įvesdami mėnesio numerį: ");
 
             try {
                 switch(SC.nextInt()) {
@@ -33,11 +35,13 @@ public final class MonthInput {
                 }
 
                 if (month == 0)
-                    System.out.println("\nKlaidinga įvestis! Toks mėnesio numeris neegzistuoja!\n" +
+                    PrintMessages.printMessageWithNewLine
+                            ("\nKlaidinga įvestis! Toks mėnesio numeris neegzistuoja!\n" +
                             "Prašome nurodyti metų mėnesį, " +
                             "įvedant mėnesio numerį (skaičių nuo 1 iki 12).");
             } catch (InputMismatchException | IllegalArgumentException exception) {
-                System.out.println("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
+                PrintMessages.printMessageWithNewLine
+                        ("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
                         "Prašome nurodyti metų mėnesį, " +
                         "įvedant mėnesio numerį (skaičių nuo 1 iki 12).");
                 SC.nextLine();

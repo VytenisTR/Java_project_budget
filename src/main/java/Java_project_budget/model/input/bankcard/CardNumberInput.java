@@ -1,5 +1,6 @@
 package Java_project_budget.model.input.bankcard;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
 import java.util.Scanner;
 
 public final class CardNumberInput {
@@ -9,18 +10,21 @@ public final class CardNumberInput {
         String cardNumber = null;
 
         while (cardNumber == null) {
-            System.out.print("\nĮveskite banko kortelės numerį, susidedantį iš 20 ženklų: ");
+            PrintMessages.printMessageWithoutNewLine
+                    ("\nĮveskite banko kortelės numerį, susidedantį iš 20 ženklų: ");
 
             String userInput = SC.next();
 
             if(userInput.isBlank()) {
-                System.out.println("\nKortelės numeris negali būti tuščias!");
+                PrintMessages.printMessageWithNewLine("\nKortelės numeris negali būti tuščias!");
             }
             else if (userInput.length() < 20) {
-                System.out.println("\nKortelės numeris negali būti mažesnis negu 20 ženklų!");
+                PrintMessages.printMessageWithNewLine
+                        ("\nKortelės numeris negali būti mažesnis negu 20 ženklų!");
             }
             else if (userInput.length() > 20) {
-                System.out.println("\nKortelės numeris negali būti didesnis negu 20 ženklų!");
+                PrintMessages.printMessageWithNewLine
+                        ("\nKortelės numeris negali būti didesnis negu 20 ženklų!");
             }
             else {
                 cardNumber = (userInput.substring(0, 4).concat("-")

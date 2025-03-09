@@ -27,8 +27,8 @@ public final class IncomeRecord extends BudgetRecord implements Serializable {
         return amount.doubleValue();
     }
 
-    public String getCategory() {
-        return category.getPrintLT();
+    public IncomeCategory getCategory() {
+        return category;
     }
 
     public String getDate() {
@@ -77,7 +77,7 @@ public final class IncomeRecord extends BudgetRecord implements Serializable {
                 "Pajamų kategorija: %s\n" +
                 "Pajamų įrašo data: %s\n" +
                 "Ar pajamos buvo gautos į banko sąskaitą: %s\n" +
-                "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
+                "Papildoma informacija: %s", getId(), getAmount(), getCategory().getPrintLT(),
                 getDate(), isBankTransfer ? "Taip" : "Ne", getOtherInformation());
     }
 }

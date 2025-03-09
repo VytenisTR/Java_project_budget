@@ -1,8 +1,8 @@
 package Java_project_budget.model.budget.services.files.read.income;
 
 import Java_project_budget.model.budget.services.files.transformers.IncomeCSVReadTransformer;
-import Java_project_budget.model.budget.services.files.utils.FileReadUtilities;
 import Java_project_budget.model.budget.utils.DisplayIncomeRecords;
+import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,24 +19,36 @@ public final class ReadIncomeFromFileService {
         List<BudgetRecord> budgetIncomeRecordsList = new ArrayList<>();
 
         try {
-            final List<String> inputFromCSV = Files.readAllLines(FILE_PATH);
-
-            if (inputFromCSV.isEmpty()) {
-                System.out.println("\nNerasta jokių įrašų.");
-            } else if (!FileReadUtilities.checkIfIncomeRecordExists(inputFromCSV)) {
-                System.out.println("\nNerasta jokių biudžeto pajamų įrašų.");
+            if (!doesIncomeFileExist()) {
+                PrintMessages.printMessageWithNewLine("\nDuomenų failas neegzistuoja.");
             } else {
-                for (String string : inputFromCSV) {
-                    final String[] budgetRecordStrings = string.split(",");
-                    if (budgetRecordStrings.length == 6) {
-                        budgetIncomeRecordsList.add(incomeCSVReadTransformer.transformFromCSV(budgetRecordStrings));
+                final List<String> inputFromCSV = Files.readAllLines(FILE_PATH);
+
+                if (inputFromCSV.isEmpty()) {
+                    PrintMessages.printMessageWithNewLine("\nNerasta jokių biudžeto pajamų įrašų.");
+                } else {
+                    for (String string : inputFromCSV) {
+                        readFromCSV(budgetIncomeRecordsList, string);
                     }
+
+                    DisplayIncomeRecords.printIncomeRecords(budgetIncomeRecordsList);
                 }
-                DisplayIncomeRecords.printIncomeRecords(budgetIncomeRecordsList);
             }
         } catch (IOException exception) {
-            System.out.println("\nĮvyko klaida, bandant gauti biudžeto pajamų įrašus. " +
+            PrintMessages.printMessageWithNewLine
+                    ("\nĮvyko klaida, bandant gauti biudžeto pajamų įrašus. " +
                     "Klaidos aprašymas pateikimas žemiau.\n" + exception.getMessage());
         }
+    }
+
+    private void readFromCSV(List<BudgetRecord> budgetIncomeRecordsList, String string) {
+        final String[] budgetRecordStrings = string.split(",");
+        if (budgetRecordStrings.length == 7) {
+            budgetIncomeRecordsList.add(incomeCSVReadTransformer.transformFromCSV(budgetRecordStrings));
+        }
+    }
+
+    public boolean doesIncomeFileExist() {
+        return Files.exists(FILE_PATH);
     }
 }

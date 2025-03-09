@@ -1,15 +1,18 @@
 package Java_project_budget.model.budget.meniu.files;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
+
 public final class DisplayFilesMeniu {
 
     public static void displayMeniu() {
-        System.out.println("\nPasirinkite norimą operaciją, įvesdami operacijos numerį iš pateikto sąrašo:");
-        System.out.println("[1] - Išsaugoti biudžeto pajamų įrašus į CSV");
-        System.out.println("[2] - Išsaugoti biudžeto išlaidų įrašus į CSV");
-        System.out.println("[3] - Išsaugoti biudžeto pajamų ir išlaidų įrašus į CSV");
-        System.out.println("[4] - Gauti biudžeto pajamų įrašus iš CSV");
-        System.out.println("[5] - Gauti biudžeto išlaidų įrašus iš CSV");
-        System.out.println("[6] - Gauti biudžeto pajamų ir išlaidų įrašus iš CSV");
-        System.out.println("[7] - Grįžti atgal\n");
+        PrintMessages.printMessageWithNewLine
+                ("\nPasirinkite norimą operaciją, įvesdami operacijos numerį iš pateikto sąrašo:");
+        PrintMessages.printMessageWithNewLine("[1] - Išsaugoti biudžeto pajamų įrašus į CSV");
+        PrintMessages.printMessageWithNewLine("[2] - Išsaugoti biudžeto išlaidų įrašus į CSV");
+        PrintMessages.printMessageWithNewLine("[3] - Išsaugoti biudžeto pajamų ir išlaidų įrašus į CSV");
+        PrintMessages.printMessageWithNewLine("[4] - Gauti biudžeto pajamų įrašus iš CSV");
+        PrintMessages.printMessageWithNewLine("[5] - Gauti biudžeto išlaidų įrašus iš CSV");
+        PrintMessages.printMessageWithNewLine("[6] - Gauti biudžeto pajamų ir išlaidų įrašus iš CSV");
+        PrintMessages.printMessageWithNewLine("[7] - Grįžti atgal\n");
     }
 }

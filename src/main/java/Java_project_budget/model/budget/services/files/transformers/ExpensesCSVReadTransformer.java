@@ -13,20 +13,19 @@ public final class ExpensesCSVReadTransformer {
 
     public ExpensesRecord transformFromCSV(String[] budgetRecordStrings) {
         final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        final BigDecimal amount = BigDecimal.valueOf(Double.parseDouble(budgetRecordStrings[1]));
-        final ExpensesCategory category = ExpensesCategory.
-                valueOf(budgetRecordStrings[2].toUpperCase().replace(' ', '_'));
-        final LocalDateTime date = LocalDateTime.parse(budgetRecordStrings[3], dateTimeFormatter);
-        final PaymentType paymentType = PaymentType.
-                valueOf(budgetRecordStrings[4].toUpperCase().replace(' ', '_'));
-        final String otherInformation = budgetRecordStrings[7];
+        final BigDecimal amount = BigDecimal.valueOf(Double.parseDouble(budgetRecordStrings[1].
+                concat(".").concat(budgetRecordStrings[2])));
+        final ExpensesCategory category = ExpensesCategory.valueOf(budgetRecordStrings[3]);
+        final LocalDateTime date = LocalDateTime.parse(budgetRecordStrings[4], dateTimeFormatter);
+        final PaymentType paymentType = PaymentType.valueOf(budgetRecordStrings[5]);
+        final String otherInformation = budgetRecordStrings[8];
 
         if (paymentType == PaymentType.GRYNIEJI) {
             return new ExpensesRecord(amount, category, date, paymentType, otherInformation);
         } else {
             return new ExpensesRecord(amount, category, date, paymentType,
-                    new BankCard(budgetRecordStrings[5],
-                    CardType.valueOf(budgetRecordStrings[6].toUpperCase().replace(' ', '_'))),
+                    new BankCard(budgetRecordStrings[6],
+                    CardType.valueOf(budgetRecordStrings[7])),
                     otherInformation);
         }
     }

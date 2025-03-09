@@ -12,17 +12,16 @@ import Java_project_budget.model.budget.services.files.write.all.WriteAllToFileS
 import Java_project_budget.model.budget.services.files.write.expenses.WriteExpensesToFileService;
 import Java_project_budget.model.budget.services.files.write.income.WriteIncomeToFileService;
 import Java_project_budget.model.budget.services.update.BudgetRecordUpdateService;
-import Java_project_budget.model.budget.utils.BudgetListSizeResolver;
 import Java_project_budget.model.budget.utils.DisplayExpensesRecords;
 import Java_project_budget.model.budget.utils.DisplayIncomeRecords;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import Java_project_budget.model.budget.services.ExpensesRecordResolverService;
 import Java_project_budget.model.budget.services.IncomeRecordResolverService;
 import Java_project_budget.model.budget.meniu.budget.BudgetMeniuResolver;
-import Java_project_budget.model.input.common.record_id.ExpensesIdToBeRemovedInput;
-import Java_project_budget.model.input.common.record_id.ExpensesIdToBeUpdatedInput;
-import Java_project_budget.model.input.common.record_id.IncomeIdToBeRemovedInput;
-import Java_project_budget.model.input.common.record_id.IncomeIdToBeUpdatedInput;
+import Java_project_budget.model.input.record_id.ExpensesIdToBeRemovedInput;
+import Java_project_budget.model.input.record_id.ExpensesIdToBeUpdatedInput;
+import Java_project_budget.model.input.record_id.IncomeIdToBeRemovedInput;
+import Java_project_budget.model.input.record_id.IncomeIdToBeUpdatedInput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,30 +65,18 @@ public final class BudgetManagement {
                 case 1 -> budgetRecordsListServices.addBudgetRecord(budgetRecordsList,
                         incomeRecordResolverService.createIncomeRecord());
                 case 2 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto pajamų įrašų.\n");
-                    } else {
-                        DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
-                        budgetRecordsListServices.removeBudgetRecord(budgetRecordsList,
-                                new IncomeIdToBeRemovedInput());
-                    }
+                    DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
+
+                    budgetRecordsListServices.removeBudgetRecord(budgetRecordsList,
+                            new IncomeIdToBeRemovedInput());
                 }
                 case 3 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto pajamų įrašų.\n");
-                    } else {
-                        DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
-                        budgetRecordUpdateService.updateBudgetRecord(budgetRecordsList,
-                                new IncomeIdToBeUpdatedInput());
-                    }
+                    DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
+
+                    budgetRecordUpdateService.updateBudgetRecord(budgetRecordsList,
+                            new IncomeIdToBeUpdatedInput());
                 }
-                case 4 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto pajamų įrašų.\n");
-                    } else {
-                        DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
-                    }
-                }
+                case 4 -> DisplayIncomeRecords.printIncomeRecords(budgetRecordsList);
                 case 5 -> runIncomeMeniu = false;
             }
         }
@@ -103,30 +90,18 @@ public final class BudgetManagement {
                 case 1 -> budgetRecordsListServices.addBudgetRecord(budgetRecordsList,
                         expensesRecordResolverService.createExpensesRecord());
                 case 2 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto išlaidų įrašų.\n");
-                    } else {
-                        DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
-                        budgetRecordsListServices.removeBudgetRecord(budgetRecordsList,
-                                new ExpensesIdToBeRemovedInput());
-                    }
+                    DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
+
+                    budgetRecordsListServices.removeBudgetRecord(budgetRecordsList,
+                            new ExpensesIdToBeRemovedInput());
                 }
                 case 3 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto išlaidų įrašų.\n");
-                    } else {
-                        DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
-                        budgetRecordUpdateService.updateBudgetRecord(budgetRecordsList,
-                                new ExpensesIdToBeUpdatedInput());
-                    }
+                    DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
+
+                    budgetRecordUpdateService.updateBudgetRecord(budgetRecordsList,
+                            new ExpensesIdToBeUpdatedInput());
                 }
-                case 4 -> {
-                    if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
-                        System.out.println("\nNėra jokių biudžeto išlaidų įrašų.\n");
-                    } else {
-                        DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
-                    }
-                }
+                case 4 -> DisplayExpensesRecords.printExpensesRecords(budgetRecordsList);
                 case 5 -> runExpensesMeniu = false;
             }
         }

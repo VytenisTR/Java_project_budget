@@ -1,11 +1,12 @@
-package Java_project_budget.model.input.common.date;
+package Java_project_budget.model.input.income.date;
 
+import Java_project_budget.model.budget.utils.PrintMessages;
 import Java_project_budget.model.input.utils.LeapYearResolver;
 import Java_project_budget.model.input.utils.MonthByNumberResolver;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public final class DayInput {
+public final class IncomeDayInput {
     private static final Scanner SC = new Scanner(System.in);
 
     public int enterDay(final int userYearInput, final int userMonthInput) {
@@ -15,19 +16,22 @@ public final class DayInput {
                 : MonthByNumberResolver.getMonthByNumber(userMonthInput).getDayCountNotLeapYear();
 
         while(day <= 0 || day > monthMaxDayCount) {
-            System.out.print("\nĮveskite mėnesio dieną, kurią buvo gautos pajamos: ");
+            PrintMessages.printMessageWithoutNewLine
+                    ("\nĮveskite mėnesio dieną, kurią buvo gautos pajamos: ");
 
             try {
                 day = SC.nextInt();
 
                 if (day <= 0 || day > monthMaxDayCount)
-                    System.out.printf("\nKlaidinga įvestis! Diena yra už mėnesio dienų skaičiaus ribų!\n" +
+                    PrintMessages.printMessageWithoutNewLine(String.format
+                            ("\nKlaidinga įvestis! Diena yra už mėnesio dienų skaičiaus ribų!\n" +
                             "Prašome įvesti mėnesio dieną " +
-                            "(skaičių nuo 1 iki %d).\n", monthMaxDayCount);
+                            "(skaičių nuo 1 iki %d).\n", monthMaxDayCount));
             } catch (InputMismatchException | IllegalArgumentException exception) {
-                System.out.printf("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
+                PrintMessages.printMessageWithoutNewLine(String.format
+                        ("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu!\n" +
                         "Prašome įvesti mėnesio dieną " +
-                        "(skaičių nuo 1 iki %d).\n", monthMaxDayCount);
+                        "(skaičių nuo 1 iki %d).\n", monthMaxDayCount));
                 SC.nextLine();
             }
         }

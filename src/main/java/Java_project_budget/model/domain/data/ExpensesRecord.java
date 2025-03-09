@@ -40,8 +40,8 @@ public final class ExpensesRecord extends BudgetRecord implements Serializable {
         return amount.doubleValue();
     }
 
-    public String getCategory() {
-        return category.getPrintLT();
+    public ExpensesCategory getCategory() {
+        return category;
     }
 
     public String getDate() {
@@ -49,8 +49,8 @@ public final class ExpensesRecord extends BudgetRecord implements Serializable {
         return date.format(dateTimeFormatter);
     }
 
-    public String getPaymentType() {
-        return paymentType.getPrintLT();
+    public PaymentType getPaymentType() {
+        return paymentType;
     }
 
     public BankCard getBankCard() {
@@ -96,8 +96,8 @@ public final class ExpensesRecord extends BudgetRecord implements Serializable {
                             "Išlaidų kategorija: %s\n" +
                             "Išlaidų įrašo data: %s\n" +
                             "Atsiskaitymo būdas: %s\n" +
-                            "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
-                    getDate(), getPaymentType(), getOtherInformation());
+                            "Papildoma informacija: %s", getId(), getAmount(), getCategory().getPrintLT(),
+                    getDate(), getPaymentType().getPrintLT(), getOtherInformation());
         } else {
             return String.format("\nUnikalus išlaidų įrašo numeris: %d\n" +
                             "Išlaidų suma: %.2f EUR\n" +
@@ -106,9 +106,9 @@ public final class ExpensesRecord extends BudgetRecord implements Serializable {
                             "Atsiskaitymo būdas: %s\n" +
                             "Banko kortelės numeris: %s\n" +
                             "Banko kortelės tipas: %s\n" +
-                            "Papildoma informacija: %s", getId(), getAmount(), getCategory(),
-                    getDate(), getPaymentType(), getBankCard().getNumber(),
-                    getBankCard().getCardType(), getOtherInformation());
+                            "Papildoma informacija: %s", getId(), getAmount(), getCategory().getPrintLT(),
+                    getDate(), getPaymentType().getPrintLT(), getBankCard().getNumber(),
+                    getBankCard().getCardType().getPrintLT(), getOtherInformation());
         }
     }
 }

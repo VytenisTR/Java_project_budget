@@ -11,7 +11,7 @@ public final class ExpensesRecordUpdateService {
     private final ExpensesPaymentTypeUpdateService expensesPaymentTypeUpdateService = new ExpensesPaymentTypeUpdateService();
 
     public void updateExpensesRecord(ExpensesRecord expensesRecord) {
-        if (expensesRecord.getPaymentType().equals("Grynieji")) {
+        if (expensesRecord.getPaymentType().getPrintLT().equals("Grynieji")) {
             expensesAmountUpdateService.updateExpensesAmount(expensesRecord);
             expensesCategoryUpdateService.updateExpensesCategory(expensesRecord);
             expensesDateUpdateService.updateExpensesDate(expensesRecord);

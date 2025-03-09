@@ -1,8 +1,8 @@
 package Java_project_budget.model.enums;
 
 public enum CardType {
-    KREDITINĖ("Kreditinė"),
-    DEBETINĖ("Debetinė");
+    KREDITINE("Kreditinė"),
+    DEBETINE("Debetinė");
 
     private final String printLT;
 
