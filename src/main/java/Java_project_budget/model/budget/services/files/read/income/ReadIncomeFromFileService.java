@@ -1,8 +1,10 @@
 package Java_project_budget.model.budget.services.files.read.income;
 
 import Java_project_budget.model.budget.services.files.transformers.IncomeCSVReadTransformer;
+import Java_project_budget.model.budget.utils.BudgetListSizeResolver;
 import Java_project_budget.model.budget.utils.DisplayIncomeRecords;
 import Java_project_budget.model.budget.utils.PrintMessages;
+import Java_project_budget.model.domain.data.IncomeRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +19,7 @@ public final class ReadIncomeFromFileService {
 
     public void readIncomeFromCSV() {
         List<BudgetRecord> budgetIncomeRecordsList = new ArrayList<>();
+        int incomeRecordsCount = 1;
 
         try {
             if (!doesIncomeFileExist()) {
@@ -28,10 +31,18 @@ public final class ReadIncomeFromFileService {
                     PrintMessages.printMessageWithNewLine("\nNerasta jokių biudžeto pajamų įrašų.");
                 } else {
                     for (String string : inputFromCSV) {
-                        readFromCSV(budgetIncomeRecordsList, string);
+                        readFromCSV(budgetIncomeRecordsList, string, incomeRecordsCount);
+                        incomeRecordsCount++;
                     }
 
-                    DisplayIncomeRecords.printIncomeRecords(budgetIncomeRecordsList);
+                    if (BudgetListSizeResolver.checkIfEmpty(budgetIncomeRecordsList)) {
+                        PrintMessages.printMessageWithNewLine
+                                ("\nNepavyko apdoroti nei vieno biudžeto pajamų įrašo.");
+                    } else {
+                        DisplayIncomeRecords.printIncomeRecords(budgetIncomeRecordsList);
+                    }
+
+                    incomeRecordsCount = 1;
                 }
             }
         } catch (IOException exception) {
@@ -41,10 +52,18 @@ public final class ReadIncomeFromFileService {
         }
     }
 
-    private void readFromCSV(List<BudgetRecord> budgetIncomeRecordsList, String string) {
+    private void readFromCSV(List<BudgetRecord> budgetIncomeRecordsList, final String string,
+                             final int incomeRecordsCount) {
         final String[] budgetRecordStrings = string.split(",");
         if (budgetRecordStrings.length == 7) {
-            budgetIncomeRecordsList.add(incomeCSVReadTransformer.transformFromCSV(budgetRecordStrings));
+            final IncomeRecord incomeRecord = incomeCSVReadTransformer.transformFromCSV(budgetRecordStrings);
+            if (incomeRecord != null) {
+                budgetIncomeRecordsList.add(incomeRecord);
+            } else {
+                PrintMessages.printMessageWithoutNewLine(
+                        String.format("\nĮvyko klaida apdorojant %d biudžeto pajamų įrašą iš CSV failo.\n",
+                                incomeRecordsCount));
+            }
         }
     }
 

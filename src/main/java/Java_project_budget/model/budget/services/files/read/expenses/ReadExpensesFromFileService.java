@@ -1,8 +1,10 @@
 package Java_project_budget.model.budget.services.files.read.expenses;
 
 import Java_project_budget.model.budget.services.files.transformers.ExpensesCSVReadTransformer;
+import Java_project_budget.model.budget.utils.BudgetListSizeResolver;
 import Java_project_budget.model.budget.utils.DisplayExpensesRecords;
 import Java_project_budget.model.budget.utils.PrintMessages;
+import Java_project_budget.model.domain.data.ExpensesRecord;
 import Java_project_budget.model.domain.parent.BudgetRecord;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +19,7 @@ public final class ReadExpensesFromFileService {
 
     public void readExpensesFromCSV() {
         List<BudgetRecord> budgetExpensesRecordsList = new ArrayList<>();
+        int expensesRecordsCount = 1;
 
         try {
             if (!doesExpensesFileExists()) {
@@ -28,9 +31,18 @@ public final class ReadExpensesFromFileService {
                     PrintMessages.printMessageWithNewLine("\nNerasta jokių biudžeto išlaidų įrašų.");
                 } else {
                     for (String string : inputFromCSV) {
-                        readFromCSV(budgetExpensesRecordsList, string);
+                        readFromCSV(budgetExpensesRecordsList, string, expensesRecordsCount);
+                        expensesRecordsCount++;
                     }
-                    DisplayExpensesRecords.printExpensesRecords(budgetExpensesRecordsList);
+
+                    if (BudgetListSizeResolver.checkIfEmpty(budgetExpensesRecordsList)) {
+                        PrintMessages.printMessageWithNewLine
+                                ("\nNepavyko apdoroti nei vieno biudžeto išlaidų įrašo.");
+                    } else {
+                        DisplayExpensesRecords.printExpensesRecords(budgetExpensesRecordsList);
+                    }
+
+                    expensesRecordsCount = 1;
                 }
             }
         } catch (IOException exception) {
@@ -40,10 +52,19 @@ public final class ReadExpensesFromFileService {
         }
     }
 
-    private void readFromCSV(List<BudgetRecord> budgetExpensesRecordsList, String string) {
+    private void readFromCSV(List<BudgetRecord> budgetExpensesRecordsList, final String string,
+                             final int expensesRecordsCount) {
         final String[] budgetRecordStrings = string.split(",");
         if (budgetRecordStrings.length != 7) {
-            budgetExpensesRecordsList.add(expensesCSVReadTransformer.transformFromCSV(budgetRecordStrings));
+            final ExpensesRecord expensesRecord = expensesCSVReadTransformer.
+                    transformFromCSV(budgetRecordStrings);
+            if (expensesRecord != null) {
+                budgetExpensesRecordsList.add(expensesRecord);
+            } else {
+                PrintMessages.printMessageWithoutNewLine(
+                        String.format("\nĮvyko klaida apdorojant %d biudžeto išlaidų įrašą iš CSV failo.\n",
+                                expensesRecordsCount));
+            }
         }
     }
 
