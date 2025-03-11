@@ -20,12 +20,12 @@ public final class RecordUpdateMeniuResolver implements ScannerInput {
                 if (userInput < 1 || userInput > 2)
                     PrintMessages.printMessageWithNewLine("\nKlaidingas operacijos numeris! " +
                             "Prašome įvesti pageidaujamos atlikti operacijos " +
-                            "numerį (skaičių 1 arba 2).\n");
+                            "numerį (skaičių 1 arba 2).");
             } catch (InputMismatchException | IllegalArgumentException exception) {
                 PrintMessages.printMessageWithNewLine
                         ("\nAptikta tekstinė įvestis arba įvestas skaičius su kableliu! " +
                         "Prašome įvesti pageidaujamos atlikti operacijos " +
-                        "numerį (skaičių 1 arba 2).\n");
+                        "numerį (skaičių 1 arba 2).");
                 SC.nextLine();
             }
         }

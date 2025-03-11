@@ -15,7 +15,6 @@ public final class ExpensesRecordUpdateService {
             expensesAmountUpdateService.updateExpensesAmount(expensesRecord);
             expensesCategoryUpdateService.updateExpensesCategory(expensesRecord);
             expensesDateUpdateService.updateExpensesDate(expensesRecord);
-            expensesPaymentTypeUpdateService.updateExpensesPaymentType(expensesRecord);
             expensesOtherInformationUpdateService.updateExpensesOtherInformation(expensesRecord);
         } else {
             expensesAmountUpdateService.updateExpensesAmount(expensesRecord);
