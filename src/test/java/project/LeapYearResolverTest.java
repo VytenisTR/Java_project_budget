@@ -1,6 +1,6 @@
-package Java_project_budget;
+package project;
 
-import Java_project_budget.model.input.utils.LeapYearResolver;
+import project.input.utils.LeapYearResolver;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

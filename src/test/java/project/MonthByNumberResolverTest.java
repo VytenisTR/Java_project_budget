@@ -1,7 +1,7 @@
-package Java_project_budget;
+package project;
 
-import Java_project_budget.model.enums.Months;
-import Java_project_budget.model.input.utils.MonthByNumberResolver;
+import project.enums.Months;
+import project.input.utils.MonthByNumberResolver;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
