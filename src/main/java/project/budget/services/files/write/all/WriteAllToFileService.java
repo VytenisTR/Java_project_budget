@@ -20,4 +20,14 @@ public final class WriteAllToFileService {
             writeExpensesToFileService.writeExpensesToCSV(budgetRecordsList);
         }
     }
+
+    public void writeAllToCSVOnFinish(final List<BudgetRecord> budgetRecordsList) {
+        if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList)) {
+            PrintMessages.printMessageWithNewLine
+                    ("\nNėra jokių biudžeto pajamų ir išlaidų įrašų, kuriuos būtų galima išsaugoti.");
+        } else {
+            writeIncomeToFileService.writeIncomeToCSVOnFinish(budgetRecordsList);
+            writeExpensesToFileService.writeExpensesToCSVOnFinish(budgetRecordsList);
+        }
+    }
 }

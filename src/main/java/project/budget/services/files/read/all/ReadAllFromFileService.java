@@ -10,20 +10,37 @@ public final class ReadAllFromFileService {
     private final ReadIncomeFromFileService readIncomeFromFileService = new ReadIncomeFromFileService();
     private final ReadExpensesFromFileService readExpensesFromFileService = new ReadExpensesFromFileService();
 
-    public void readAllFromCSV(List<BudgetRecord> budgetRecordsList) {
+    public void readAllFromCSV() {
         if (!readIncomeFromFileService.doesIncomeFileExist() &&
                 !readExpensesFromFileService.doesExpensesFileExists()) {
             PrintMessages.printMessageWithNewLine
                     ("\nBiudžeto pajamų ir išlaidų duomenų failai neegzistuoja.");
         } else if (readIncomeFromFileService.doesIncomeFileExist() &&
                 !readExpensesFromFileService.doesExpensesFileExists()) {
-            readIncomeFromFileService.readIncomeFromCSV(budgetRecordsList);
+            readIncomeFromFileService.readIncomeFromCSV();
         } else if (!readIncomeFromFileService.doesIncomeFileExist() &&
                 readExpensesFromFileService.doesExpensesFileExists()) {
-            readExpensesFromFileService.readExpensesFromCSV(budgetRecordsList);
+            readExpensesFromFileService.readExpensesFromCSV();
         } else {
-            readIncomeFromFileService.readIncomeFromCSV(budgetRecordsList);
-            readExpensesFromFileService.readExpensesFromCSV(budgetRecordsList);
+            readIncomeFromFileService.readIncomeFromCSV();
+            readExpensesFromFileService.readExpensesFromCSV();
+        }
+    }
+
+    public void readAllFromCSVOnStart(List<BudgetRecord> budgetRecordsList) {
+        if (!readIncomeFromFileService.doesIncomeFileExist() &&
+                !readExpensesFromFileService.doesExpensesFileExists()) {
+            PrintMessages.printMessageWithNewLine
+                    ("\nBiudžeto pajamų ir išlaidų duomenų failai neegzistuoja.");
+        } else if (readIncomeFromFileService.doesIncomeFileExist() &&
+                !readExpensesFromFileService.doesExpensesFileExists()) {
+            readIncomeFromFileService.readIncomeFromCSVOnStart(budgetRecordsList);
+        } else if (!readIncomeFromFileService.doesIncomeFileExist() &&
+                readExpensesFromFileService.doesExpensesFileExists()) {
+            readExpensesFromFileService.readExpensesFromCSVOnStart(budgetRecordsList);
+        } else {
+            readIncomeFromFileService.readIncomeFromCSVOnStart(budgetRecordsList);
+            readExpensesFromFileService.readExpensesFromCSVOnStart(budgetRecordsList);
         }
     }
 }

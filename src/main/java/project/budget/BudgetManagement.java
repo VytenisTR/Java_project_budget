@@ -45,7 +45,7 @@ public final class BudgetManagement {
 
     public void runBudgetManagement() {
         boolean runBudgetManagement = true;
-        readAllFromFileService.readAllFromCSV(budgetRecordsList);
+        readAllFromFileService.readAllFromCSVOnStart(budgetRecordsList);
 
         while(runBudgetManagement) {
             switch (budgetMeniuResolver.resolveMeniu()) {
@@ -54,7 +54,7 @@ public final class BudgetManagement {
                 case 3 -> runFilesMeniu();
                 case 4 -> budgetBalanceService.printBalance(budgetRecordsList);
                 case 5 -> {
-                    writeAllToFileService.writeAllToCSV(budgetRecordsList);
+                    writeAllToFileService.writeAllToCSVOnFinish(budgetRecordsList);
                     runBudgetManagement = false;
                 }
             }
@@ -119,9 +119,9 @@ public final class BudgetManagement {
                 case 1 -> writeIncomeToFileService.writeIncomeToCSV(budgetRecordsList);
                 case 2 -> writeExpensesToFileService.writeExpensesToCSV(budgetRecordsList);
                 case 3 -> writeAllToFileService.writeAllToCSV(budgetRecordsList);
-                case 4 -> readIncomeFromFileService.readIncomeFromCSV(budgetRecordsList);
-                case 5 -> readExpensesFromFileService.readExpensesFromCSV(budgetRecordsList);
-                case 6 -> readAllFromFileService.readAllFromCSV(budgetRecordsList);
+                case 4 -> readIncomeFromFileService.readIncomeFromCSV();
+                case 5 -> readExpensesFromFileService.readExpensesFromCSV();
+                case 6 -> readAllFromFileService.readAllFromCSV();
                 case 7 -> runFilesMeniu = false;
             }
         }

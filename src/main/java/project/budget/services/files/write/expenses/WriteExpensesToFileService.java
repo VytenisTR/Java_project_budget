@@ -40,6 +40,30 @@ public final class WriteExpensesToFileService {
         }
     }
 
+    public void writeExpensesToCSVOnFinish(final List<BudgetRecord> budgetRecordsList) {
+        if (BudgetListSizeResolver.checkIfEmpty(budgetRecordsList) ||
+                !BudgetRecordExistanceResolver.checkIfExpensesRecordExists(budgetRecordsList)) {
+            PrintMessages.printMessageWithNewLine
+                    ("\nNėra jokių biudžeto išlaidų įrašų, kuriuos būtų galima išsaugoti.");
+        } else {
+            try {
+                Files.deleteIfExists(FILE_PATH);
+                Files.createDirectories(FILE_PATH.getParent());
+
+                for (BudgetRecord budgetRecord : budgetRecordsList) {
+                    saveToCSV(budgetRecord);
+                }
+
+                PrintMessages.printMessageWithNewLine
+                        ("\nBiudžeto išlaidų įrašai buvo išsaugoti šiame kataloge: " + FILE_PATH);
+            } catch (IOException exception) {
+                PrintMessages.printMessageWithNewLine
+                        ("\nĮvyko klaida, bandant išsaugoti biudžeto išlaidų įrašus. " +
+                                "Klaidos aprašymas pateikiamas žemiau.\n" + exception.getMessage());
+            }
+        }
+    }
+
     private void saveToCSV(final BudgetRecord budgetRecord) throws IOException {
         if (budgetRecord instanceof ExpensesRecord) {
             final String contentToWrite = expensesCSVWriteTransformer.

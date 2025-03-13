@@ -3,6 +3,7 @@ package project.budget.services.files.read.expenses;
 import project.budget.services.files.transformers.ExpensesCSVReadTransformer;
 import project.budget.utils.BudgetListSizeResolver;
 import project.budget.utils.PrintMessages;
+import project.budget.utils.display.DisplayExpensesRecords;
 import project.domain.data.ExpensesRecord;
 import project.domain.parent.BudgetRecord;
 import java.io.IOException;
@@ -16,7 +17,40 @@ public final class ReadExpensesFromFileService {
             "Desktop", "BudgetExpensesRecords.csv");
     private final ExpensesCSVReadTransformer expensesCSVReadTransformer = new ExpensesCSVReadTransformer();
 
-    public void readExpensesFromCSV(List<BudgetRecord> budgetRecordsList) {
+    public void readExpensesFromCSV() {
+        List<BudgetRecord> budgetExpensesRecordsList = new ArrayList<>();
+        int expensesRecordsCount = 1;
+
+        try {
+            if (!doesExpensesFileExists()) {
+                PrintMessages.printMessageWithNewLine("\nBiudžeto išlaidų duomenų failas neegzistuoja.");
+            } else {
+                final List<String> inputFromCSV = Files.readAllLines(FILE_PATH);
+
+                if (inputFromCSV.isEmpty()) {
+                    PrintMessages.printMessageWithNewLine("\nNerasta jokių biudžeto išlaidų įrašų.");
+                } else {
+                    for (String string : inputFromCSV) {
+                        readFromCSV(budgetExpensesRecordsList, string, expensesRecordsCount);
+                        expensesRecordsCount++;
+                    }
+
+                    if (BudgetListSizeResolver.checkIfEmpty(budgetExpensesRecordsList)) {
+                        PrintMessages.printMessageWithNewLine
+                                ("\nNepavyko apdoroti nei vieno biudžeto išlaidų įrašo.");
+                    } else {
+                        DisplayExpensesRecords.printExpensesRecords(budgetExpensesRecordsList);
+                    }
+                }
+            }
+        } catch (IOException exception) {
+            PrintMessages.printMessageWithNewLine
+                    ("\nĮvyko klaida, bandant gauti biudžeto išlaidų įrašus. " +
+                    "Klaidos aprašymas pateikimas žemiau.\n" + exception.getMessage());
+        }
+    }
+
+    public void readExpensesFromCSVOnStart(List<BudgetRecord> budgetRecordsList) {
         List<BudgetRecord> budgetExpensesRecordsList = new ArrayList<>();
         int expensesRecordsCount = 1;
 
@@ -42,14 +76,12 @@ public final class ReadExpensesFromFileService {
                         PrintMessages.printMessageWithNewLine
                                 ("\nBiudžeto išlaidų įrašai buvo sėkmingai įkelti.");
                     }
-
-                    expensesRecordsCount = 1;
                 }
             }
         } catch (IOException exception) {
             PrintMessages.printMessageWithNewLine
                     ("\nĮvyko klaida, bandant gauti biudžeto išlaidų įrašus. " +
-                    "Klaidos aprašymas pateikimas žemiau.\n" + exception.getMessage());
+                            "Klaidos aprašymas pateikimas žemiau.\n" + exception.getMessage());
         }
     }
 
@@ -70,9 +102,7 @@ public final class ReadExpensesFromFileService {
     }
 
     private void addExpensesRecordsToBudget(final List<BudgetRecord> budgetExpensesRecordsList, List<BudgetRecord> budgetRecordsList) {
-        for (BudgetRecord budgetRecord : budgetExpensesRecordsList) {
-            budgetRecordsList.add(budgetRecord);
-        }
+        budgetRecordsList.addAll(budgetExpensesRecordsList);
     }
 
     public boolean doesExpensesFileExists() {
