@@ -1,6 +1,7 @@
-package project.budget.utils;
+package project.budget.utils.display;
 
 import project.budget.services.files.utils.BudgetRecordExistanceResolver;
+import project.budget.utils.PrintMessages;
 import project.domain.data.IncomeRecord;
 import project.domain.parent.BudgetRecord;
 import java.util.List;
